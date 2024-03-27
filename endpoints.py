@@ -53,6 +53,7 @@ def clientes():
 #TODO: Implement Put and Delete
 # Add Mocks for gets
 # (pedidos já feitos deveriam ser editados?)
+#[Brendon] Poderia, mas acredito que seja melhor ter versionamento/histórico de alterações.
 
 
 if __name__ == '__main__':  
