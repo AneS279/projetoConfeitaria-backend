@@ -1,14 +1,27 @@
 from flask import Flask
 from flask import request
+from flask_restx import Api, Resource
 
 # flask --app endpoints run
 app = Flask(__name__)
-app.run(debug=True)
 
+api = Api(app,
+           catch_all_404s=True,
+           version='0.1',
+           title="REST HTTP API's Gateway",
+           descrition="REST API gateway")
 
-@app.route('/')
-def home():
-    return str(app.url_map)
+ns = api.namespace('helloworld', description='Hello World operations')
+
+@ns.route('/')
+class HelloWorld(Resource):
+    def get(self):
+        """ Hello World!
+
+        Returns:
+            _type_: None
+        """
+        return str(app.url_map)
 
 #GET/POST Ingredientes
 @app.route('/ingredientes', methods = ['GET', 'POST'])
@@ -49,12 +62,12 @@ def clientes():
         return 'Post Clientes',102
     else:
         return 'Clientes'
-    
+
 #TODO: Implement Put and Delete
 # Add Mocks for gets
 # (pedidos já feitos deveriam ser editados?)
 #[Brendon] Poderia, mas acredito que seja melhor ter versionamento/histórico de alterações.
 
 
-if __name__ == '__main__':  
-   app.run()
+if __name__ == '__main__':
+   app.run(debug=True)

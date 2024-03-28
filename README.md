@@ -64,3 +64,6 @@
 #
 # Gerar documentação automaticamente parece ser o ideal
 # https://swagger.io/blog/api-development/automatically-generating-swagger-specifications-wi/
+#
+# Dependências
+# Run: pipreqs --force
